@@ -102,7 +102,7 @@
             "value": "[listkeys(resourceId('Microsoft.EventHub/namespaces/eventhubs/authorizationRules', variables('eventhubNamespaceName'), variables('alarmsEventHubName'), variables('alarmsEventProducerKeyName')), variables('eventHubApiVersion')).primaryConnectionString]"
         },
         "alarmConsumerConnectionString": {
-            "type": "securestring",
+            "type": "string",
             "value": "[listkeys(resourceId('Microsoft.EventHub/namespaces/eventhubs/authorizationRules', variables('eventhubNamespaceName'), variables('alarmsEventHubName'), variables('alarmsEventConsumerKeyName')), variables('eventHubApiVersion')).primaryConnectionString]"
         }
     }
