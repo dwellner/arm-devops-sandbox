@@ -97,12 +97,12 @@
         }
     ],
     "outputs": {
-        "AlarmProducerConnectionString": {
-            "type": "string",
+        "alarmProducerConnectionString": {
+            "type": "securestring",
             "value": "[listkeys(resourceId('Microsoft.EventHub/namespaces/eventhubs/authorizationRules', variables('eventhubNamespaceName'), variables('alarmsEventHubName'), variables('alarmsEventProducerKeyName')), variables('eventHubApiVersion')).primaryConnectionString]"
         },
-        "AlarmConsumerConnectionString": {
-            "type": "string",
+        "alarmConsumerConnectionString": {
+            "type": "securestring",
             "value": "[listkeys(resourceId('Microsoft.EventHub/namespaces/eventhubs/authorizationRules', variables('eventhubNamespaceName'), variables('alarmsEventHubName'), variables('alarmsEventConsumerKeyName')), variables('eventHubApiVersion')).primaryConnectionString]"
         }
     }

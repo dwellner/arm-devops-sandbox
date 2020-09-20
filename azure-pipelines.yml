@@ -32,5 +32,5 @@ steps:
     filePath: $(Build.SourcesDirectory)/tasks/ReadOutputParameters.ps1
     arguments: -ArmOutputString '$(EventHubArmOutputs)'
 
-- powershell: echo $env:AlarmProducerConnectionString
-- powershell: echo $env:AlarmConsumerConnectionString
+- powershell: echo $env:alarmProducerConnectionString
+- powershell: echo $env:alarmConsumerConnectionString
