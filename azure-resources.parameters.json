@@ -5,12 +5,9 @@
         "resourceNamePrefix": {
             "value": "danielwellner-arm-sandbox-55332" 
         },
-        "location": {
-            "value": "westeurope"            
-        },
         "resourceTags": {
             "value": {
-                "TagX": "123",
+                "TagX": "Attempt #2",
                 "TagY": "abc"
             }
         }
