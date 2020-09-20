@@ -10,10 +10,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: Deploy Event Hub
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'arm-devops-sandbox-asc'
+    subscriptionId: '45678783-8214-4a06-b674-459fc609b72c'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'learning-danielwellner-rg'
+    location: 'West Europe'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(Build.SourcesDirectory)/arm-eventhub.json'
+    csmParametersFile: '$(Build.SourcesDirectory)/azure-resources.parameters.json'
+    deploymentMode: 'Incremental'
+
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
