@@ -11,7 +11,7 @@ pool:
 
 steps:
 - task: AzureResourceManagerTemplateDeployment@3
-  displayName: Deploy Event Hub
+  displayName: Deploy EventHub
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: 'arm-devops-sandbox-asc'
@@ -20,9 +20,16 @@ steps:
     resourceGroupName: 'learning-danielwellner-rg'
     location: 'West Europe'
     templateLocation: 'Linked artifact'
-    csmFile: '$(Build.SourcesDirectory)/arm-eventhub.json'
-    csmParametersFile: '$(Build.SourcesDirectory)/azure-resources.parameters.json'
+    csmFile: '$(Build.SourcesDirectory)/arm-resources/arm-eventhub.json'
+    csmParametersFile: '$(Build.SourcesDirectory)/arm-resources/azure-resources.parameters.json'
     deploymentMode: 'Incremental'
+    deploymentOutputs: 'EventHubArmOutputs'
 
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: PowerShell@2
+  displayName: Propagate EventHub ARM Outputs
+  inputs:
+    targetType: 'filePath'
+    filePath: $(Build.SourcesDirectory)/tasks/ReadOutputParameters.ps1
+    arguments: -ArmOutputString '$(EventHubArmOutputs)'
+
+- powershell: ls env:
