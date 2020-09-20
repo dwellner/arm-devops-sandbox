@@ -32,4 +32,5 @@ steps:
     filePath: $(Build.SourcesDirectory)/tasks/ReadOutputParameters.ps1
     arguments: -ArmOutputString '$(EventHubArmOutputs)'
 
-- powershell: ls env:
+- powershell: |
+    ls env:
