@@ -31,6 +31,7 @@ steps:
     targetType: 'filePath'
     filePath: $(Build.SourcesDirectory)/tasks/ReadOutputParameters.ps1
     arguments: -ArmOutputString '$(EventHubArmOutputs)'
-
-- powershell: echo $env.alarmProducerConnectionString
-- powershell: echo $env.alarmConsumerConnectionString
+                      
+- powershell: echo 'Producer is $(alarmProducerConnectionString)'
+- powershell: echo 'Consumer is $(alarmConsumerConnectionString)'
+                      
