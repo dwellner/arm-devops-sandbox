@@ -10,10 +10,10 @@ steps:
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: 'arm-devops-sandbox-asc'
-    subscriptionId: '$(dev-subscription)'
+    subscriptionId: $(dev-subscription)
     action: 'Create Or Update Resource Group'
-    resourceGroupName: '$(dev-resource-group)'
-    location: '$(dev-location)'
+    resourceGroupName: $(dev-resource-group)
+    location: $(dev-location)
     templateLocation: 'Linked artifact'
     csmFile: '$(Build.SourcesDirectory)/arm-resources/arm-eventhub.json'
     csmParametersFile: '$(Build.SourcesDirectory)/arm-resources/azure-resources.parameters.json'
@@ -28,14 +28,14 @@ steps:
     arguments: -ArmOutputString '$(EventHubArmOutputs)'
 
 - task: AzureResourceManagerTemplateDeployment@3
-  displayName: Deploy EventHub
+  displayName: Deploy Functions App
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: 'arm-devops-sandbox-asc'
-    subscriptionId: '$(dev-subscription)'
+    subscriptionId: $(dev-subscription)
     action: 'Create Or Update Resource Group'
-    resourceGroupName: '$(dev-resource-group)'
-    location: '$(dev-location)'
+    resourceGroupName: $(dev-resource-group)
+    location: $(dev-location)
     templateLocation: 'Linked artifact'
     csmFile: '$(Build.SourcesDirectory)/arm-resources/arm-functionsapp.json'
     csmParametersFile: '$(Build.SourcesDirectory)/arm-resources/azure-resources.parameters.json'
